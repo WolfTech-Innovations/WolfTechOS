@@ -65,30 +65,19 @@ boot_animation:
     call print_string_centered
     call delay_long
     
-    ; Frame 4 - Full branding
+    ; Frame 4 - Full branding (simplified - no ASCII art)
     call clear_screen
-    mov si, logo_line1
-    mov dh, 8
-    call print_at_pos
     
-    mov si, logo_line2
-    mov dh, 9
-    call print_at_pos
-    
-    mov si, logo_line3
+    mov si, company_name
     mov dh, 10
     call print_at_pos
     
-    mov si, company_name
-    mov dh, 12
-    call print_at_pos
-    
     mov si, tagline
-    mov dh, 13
+    mov dh, 11
     call print_at_pos
     
     mov si, loading_msg
-    mov dh, 20
+    mov dh, 15
     call print_at_pos
     
     call delay_long
@@ -285,17 +274,13 @@ boot_drive: db 0
 
 ; Boot animation frames
 frame1: db "Initializing...", 0
-frame2: db "Initializing... Loading system", 0
+frame2: db "Loading system...", 0
 frame3: db "Starting WolfTech OS", 0
 
-; ASCII art logo
-logo_line1: db "  _       __      ______   ______           __  ", 0
-logo_line2: db " | |     / /___  / / __/__/_  __/__  _____/ /_ ", 0
-logo_line3: db " | | /| / / __ \\/ / /_____/ / / _ \\/ ___/ __ \\", 0
-
-company_name: db "          WOLFTECH INNOVATIONS          ", 0
-tagline:      db "     Enterprise Server Operating System     ", 0
-loading_msg:  db "           Loading kernel...           ", 0
+; Simplified branding (no ASCII art)
+company_name: db "WOLFTECH INNOVATIONS", 0
+tagline:      db "Enterprise Server Operating System", 0
+loading_msg:  db "Loading kernel...", 0
 
 disk_error_msg: db "Disk read error!", 0
 
